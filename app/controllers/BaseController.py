@@ -11,7 +11,8 @@ class BaseController(Controller):
 	def __init__(self):
 		pass
 
-	def base_json(self, request: Request, response: Response, http_code=200, code=None, success="success", msg="-", data=None):
+	# def base_json(self, request: Request, response: Response, http_code=200, code=None, success="success", msg="-", data=None):
+	def base_json(self, request: Request, response: Response, http_code, code=None, success="success", msg="-", data=None):
 		json = {
 			"success": success if success else False,
 			"message": msg,
@@ -28,6 +29,9 @@ class BaseController(Controller):
 	def success(self, request: Request, response: Response, msg="success", data=None, http_code=200):
 		return self.base_json(request, response, http_code, msg=msg, data=data)
 
+	def fail(self, request: Request, response: Response, msg="Maaf ada kesalahan user", data=None):
+		return self.base_json(request, response, 400, success=False, msg=msg, data=data)
+	
 	def user_fail(self, request: Request, response: Response, msg="Maaf ada kesalahan user", data=None):
 		return self.base_json(request, response, http_code=400, success=False, msg=msg, data=data)
 

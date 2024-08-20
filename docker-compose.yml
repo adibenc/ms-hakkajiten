@@ -1,0 +1,22 @@
+# @adibenc
+
+services:
+  py-masonite:
+    build: .
+    container_name: "py-masonite"
+    restart: always
+    ports:
+      - ${DOCKER_APP_PORT}:8000
+    # network_mode: host
+    volumes:
+      - ./tmp:/tmp/local
+      # - ./var/log/node/:/app/app/logs/
+    healthcheck:
+      test: ["CMD", "echo"]
+      interval: 5m30s
+      timeout: 10s
+      retries: 3
+      start_period: 2m
+    extra_hosts:
+      - "l1:172.17.0.1"
+      - "host.docker.internal:host-gateway"
