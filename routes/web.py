@@ -8,5 +8,5 @@ ROUTES = [
 	Route.get("wiki/", "WikiController@list"),
 	Route.get("wiki/list", "WikiController@list"),
 	Route.get("wiki/d/@f", "WikiController@d"),
-	Route.get("wiki/dc/@c/@f", "WikiController@dc"),
+	Route.get("wiki/c/@c/@f", "WikiController@dc"),
 ]

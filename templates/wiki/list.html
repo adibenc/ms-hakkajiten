@@ -1,0 +1,39 @@
+
+{% extends 'layout/bs.html' %}
+{% block title %}
+Design
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+	<ol>
+		@for l in files
+		<li>
+			<a href="{{ _baseurl+'/wiki/c/'+l }}">
+			{{ _baseurl+'/wiki/c/'+l }}
+			</a>
+		</li>
+		@endfor
+	</ol>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+let ases = document.querySelectorAll("li a, th a, div a")
+ases.forEach((e) => {
+	let el = e
+	let url = el.href
+	url = url.replace("file:///wiki/", "")
+	url = url.replace("file:///D:/wiki/", "")
+
+	e.onclick = function (e) {
+		e.preventDefault();
+
+		console.log(e, arguments, this)
+		console.log("test")
+
+		window.open(url, "_blank")
+	}
+	el.href = url
+})
+</script>
+{% endblock %}

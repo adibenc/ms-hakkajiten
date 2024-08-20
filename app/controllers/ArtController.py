@@ -22,14 +22,16 @@ class ArtController(BaseController):
 			rootdir = env('APPROOT')
 			fname = f"{rootdir}templates/{prename}"
 			print(fname)
-			# list_of_files = os.listdir(fname)
-			# list_of_files = os.walk(fname)
+			
 			list_of_files = scan_dir_rc(fname)
-			list_of_files = map(lambda x: re.sub('(\.html$|\.php$)', '', x), 
+			list_of_files = map(lambda x: 
+				re.sub('(\.html$|\.php$)', '', x), 
 				list_of_files)
 			# print(list_of_files)
+			vr = f"{prename}.list"
+			print("vr", vr)
 
-			return view.render(f"{prename}/list", {
+			return view.render(vr, {
 				"prename": prename, 
 				"files": list_of_files
 			})
