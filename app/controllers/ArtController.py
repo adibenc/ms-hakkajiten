@@ -28,6 +28,7 @@ class ArtController(BaseController):
 				re.sub('(\.html$|\.php$)', '', x), 
 				list_of_files)
 			# print(list_of_files)
+			# wip use auth mw
 			vr = f"{prename}.list"
 			print("vr", vr)
 
@@ -46,12 +47,26 @@ class ArtController(BaseController):
 		except Exception as e:
 			return self.fail(req, res, str(e), [1])
 
-	def dc(self, req: Request, res: Response, view: View, 
-		c, f):
+	def dc(self, req: Request, res: Response, view: View,):
+		# f, c=None, c1=None, c2=None,
+
 		try:
 			prename = self.prename
+			ps = req.params
+			
+			c = ps.get('c')
+			f = ps.get('f')
+			
+			# wip use auth mw
+			c1 = ps.get('c1')
+			c2 = ps.get('c2')
+
 			f = f or "f3-bio"
-			return view.render(f"{prename}.{c}.{f}")
+			if c and f:
+				return view.render(f"{prename}.{c}.{f}")
+			
+			if c1 and c2 and f:
+				return view.render(f"{prename}.{c1}.{c2}.{f}")
 		except Exception as e:
 			return self.fail(req, res, str(e), [1])
 
