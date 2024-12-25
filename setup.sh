@@ -64,7 +64,7 @@ i1(){
   echo "ZENML_CONNECT_URL"
   echo $ZENML_CONNECT_URL
 
-  zenml connect --url $ZENML_CONNECT_URL
+  # zenml connect --url $ZENML_CONNECT_URL
   # Run the application
   # python3 app.py | tee -a dmy-api.log
 
