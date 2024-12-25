@@ -11,6 +11,7 @@ services:
     volumes:
       - ./tmp:/tmp/local
       # - ./var/log/node/:/app/app/logs/
+    command: bash -c "/app/setup.sh" # wip
     healthcheck:
       test: ["CMD", "echo"]
       interval: 5m30s
