@@ -10,7 +10,7 @@ services:
     # network_mode: host
     volumes:
       - ./tmp:/tmp/local
-      - ./:/app/
+      - .:/app/
     command: bash -c "/app/setup.sh" # wip
     healthcheck:
       test: ["CMD", "echo"]
@@ -18,6 +18,8 @@ services:
       timeout: 10s
       retries: 3
       start_period: 2m
+    environment:
+      - APP_INIT_TYPE=${APP_INIT_TYPE}
     extra_hosts:
       - "l1:172.17.0.1"
       - "host.docker.internal:host-gateway"
