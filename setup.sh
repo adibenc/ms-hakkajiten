@@ -10,6 +10,13 @@ i2(){
   '
   cd /app
 
+  venv_dir="/app/venv-mc3"
+
+  cd /app
+
+  # Activate the virtual environment
+  source $venv_dir/bin/activate
+
   # use existing venv if exist
   # tf/tf env by default:
   # ls /usr/local/lib/python3.11/dist-packages/
