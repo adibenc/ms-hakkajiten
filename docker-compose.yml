@@ -10,7 +10,7 @@ services:
     # network_mode: host
     volumes:
       - ./tmp:/tmp/local
-      # - ./var/log/node/:/app/app/logs/
+      - ./:/app/
     command: bash -c "/app/setup.sh" # wip
     healthcheck:
       test: ["CMD", "echo"]
