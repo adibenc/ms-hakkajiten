@@ -63,7 +63,8 @@ i1(){
   # Activate the virtual environment
   source $venv_dir/bin/activate
 
-  python -m pip install --upgrade pip
+  # python -m pip install --upgrade pip
+  pip install pendulum==2.0.5
 
   # Install required Python packages
   pip install -r requirements.txt
