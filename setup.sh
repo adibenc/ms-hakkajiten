@@ -22,6 +22,8 @@ i2(){
   # ls /usr/local/lib/python3.11/dist-packages/
 
   # call if used in parent image such as tensorflow
+  pip install pendulum==2.0.5
+  pip install pip==18.1 && pip install pendulum
   pip install -r requirements.txt
 #   pip install -r req-ml.txt
   pip install -I gunicorn
