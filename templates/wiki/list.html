@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function(){
 		let x = e.innerText.split("/")
 		return x[5]
 	})
-	.sortBy((e)=> e.length)
 
 	document.querySelector("div#group").innerHTML = grouped.map((e,ex)=> {
 		let x = e.map((e1) => {
@@ -64,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		</div>
 		`
 	})
+	.sortBy((e)=> e.length)
 	.value()
 	document.querySelector("ol.main-ol").style = "display:none;"
 })
