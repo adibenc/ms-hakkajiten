@@ -37,13 +37,19 @@ ases.forEach((e) => {
 	el.href = url
 })
 
+let ali
+let grouped
+
 document.addEventListener('DOMContentLoaded', function(){
-	let ali = Array.from(document.querySelectorAll('li'))
-	let grouped = _.chain(ali)
+	ali = Array.from(document.querySelectorAll('li'))
+	grouped = _.chain(ali)
 		.groupBy((e)=>{
 		let x = e.innerText.split("/")
 		return x[5]
-	}).map((e,ex)=> {
+	})
+	.sortBy((e)=> e.length)
+
+	document.querySelector("div#group").innerHTML = grouped.map((e,ex)=> {
 		let x = e.map((e1) => {
 			return `<li>
 				<a href="${e1.innerText}">
@@ -52,14 +58,13 @@ document.addEventListener('DOMContentLoaded', function(){
 			</li>`
 		})
 		return `
-		<div class="col-lg-4 col-sm-6">
+		<div class="col-lg-3 col-sm-4">
 		${ex} 
 			<ol>${x.join("")}</ol>
 		</div>
 		`
 	})
 	.value()
-	document.querySelector("div#group").innerHTML = grouped
 	document.querySelector("ol.main-ol").style = "display:none;"
 })
 </script>
