@@ -14,7 +14,7 @@ Design
 		</li>
 		@endfor
 	</ol>
-	<div id="group"></div>
+	<div id="group" class="row"></div>
 </div>
 {% endblock %}
 {% block scripts %}
@@ -51,7 +51,12 @@ document.addEventListener('DOMContentLoaded', function(){
 				</a>
 			</li>`
 		})
-		return `${ex} <ol>${x.join("")}</ol>`
+		return `
+		<div class="col-lg-4 col-sm-6">
+		${ex} 
+			<ol>${x.join("")}</ol>
+		</div>
+		`
 	})
 	.value()
 	document.querySelector("div#group").innerHTML = grouped
