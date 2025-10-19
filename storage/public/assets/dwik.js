@@ -92,3 +92,5 @@ function setupDark(){
 
 // Call the function to toggle lists
 // toggleLists();
+
+setupDark()
