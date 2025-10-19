@@ -74,7 +74,7 @@ function setupDark(){
 	let darks = {
 		d1: {
 			bg: "#666666",
-			bg2: "#a1a1a1",
+			bg2: "white",
 		}
 	}
 	let tbs = Array.from( document.querySelectorAll("tbody"))
@@ -86,7 +86,8 @@ function setupDark(){
 	let ans = Array.from( document.querySelectorAll("a"))
 	ans.map((e)=>{
 		// style="background-color:#acacac;"
-		e.style = `background-color:${darks.d1.bg2};`
+		// e.style = `background-color:${darks.d1.bg2};`
+		e.style = `color:white;`
 	})
 }
 
