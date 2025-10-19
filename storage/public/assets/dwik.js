@@ -73,7 +73,7 @@ function toggleLists() {
 function setupDark(){
 	let darks = {
 		d1: {
-			bg: "#acacac",
+			bg: "#666666",
 			bg2: "#a1a1a1",
 		}
 	}
