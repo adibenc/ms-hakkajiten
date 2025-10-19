@@ -69,12 +69,14 @@ document.addEventListener('DOMContentLoaded', function(){
 	document.querySelector("ol.main-ol").style = "display:none;"
 })
 
-document.querySelector("body").style = "background-color:#666666;"
-
-let ans = Array.from( document.querySelectorAll("a"))
-ans.map((e)=>{
-	// style="background-color:#acacac;"
-	e.style = `background-color:#ffffff`
-})
+setTimeout(function(){
+	document.querySelector("body").style = "background-color:#666666;"
+	
+	let ans = Array.from( document.querySelectorAll("a"))
+	ans.map((e)=>{
+		// style="background-color:#acacac;"
+		e.style = `background-color:#ffffff`
+	})
+}, 2000)
 </script>
 {% endblock %}
