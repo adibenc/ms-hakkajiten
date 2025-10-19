@@ -70,5 +70,25 @@ function toggleLists() {
 	});
 }
 
+function setupDark(){
+	let darks = {
+		d1: {
+			bg: "#acacac",
+			bg2: "#a1a1a1",
+		}
+	}
+	let tbs = Array.from( document.querySelectorAll("tbody"))
+	tbs.map((e)=>{
+		// style="background-color:#acacac;"
+		e.style = `background-color:${darks.d1.bg};`
+	})
+
+	let ans = Array.from( document.querySelectorAll("a"))
+	ans.map((e)=>{
+		// style="background-color:#acacac;"
+		e.style = `background-color:${darks.d1.bg2};`
+	})
+}
+
 // Call the function to toggle lists
 // toggleLists();
