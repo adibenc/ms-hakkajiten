@@ -11,6 +11,7 @@ i2(){
   cd /app
 
   venv_dir="/app/venv-mc3"
+  # venv_dir="./venv-mc3"
 
   cd /app
 

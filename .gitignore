@@ -19,3 +19,4 @@ package-lock.json
 storage/compiled
 [Dd]ummy*
 [Dd]my*
+*.md

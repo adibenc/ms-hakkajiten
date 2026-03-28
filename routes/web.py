@@ -1,4 +1,5 @@
 from masonite.routes import Route
+from masonite.authentication import Auth
 
 ROUTES = [
 	# Route.get("/", "WelcomeController@show"),
@@ -11,3 +12,5 @@ ROUTES = [
 	Route.get("wiki/c/@c/@f", "WikiController@dc"),
 	Route.get("wiki/c/@c1/@c2/@f", "WikiController@dc"),
 ]
+
+ROUTES += Auth.routes()

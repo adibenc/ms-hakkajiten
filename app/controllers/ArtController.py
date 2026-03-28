@@ -1,5 +1,7 @@
 import os
 import re
+# wip use fsspec
+# import fsspec
 
 from masonite.controllers import Controller
 from masonite.views import View
@@ -25,10 +27,13 @@ class ArtController(BaseController):
 			
 			list_of_files = scan_dir_rc(fname)
 			list_of_files = map(lambda x: 
-				re.sub('(\.html$|\.php$)', '', x), 
+				re.sub('(.html$|.php$)', '', x), 
 				list_of_files)
-			# print(list_of_files)
+			
 			# wip use auth mw
+			list_of_files = filter(lambda x: "dmy" not in x, list_of_files)
+
+			# print(list_of_files)
 			vr = f"{prename}.list"
 			print("vr", vr)
 
