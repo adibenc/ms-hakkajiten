@@ -62,9 +62,9 @@ services:
       - .:/app
       - static_files:/app/static
       - storage_files:/app/storage
-    depends_on:
-      db:
-        condition: service_healthy
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
     command: >
       sh -c "alembic upgrade head &&
              uvicorn main:app --host 0.0.0.0 --port 8000 --reload"

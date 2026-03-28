@@ -57,6 +57,15 @@ class Config(BaseSettings):
     # Password Reset
     PASSWORD_RESET_EXPIRATION_MINUTES: int = 1440  # 24 hours
 
+    # docker var if deployed independently
+    DOCKER_APP_HAKKA_PORT: int = 8002
+    APP_DCK_SHARED_DIR: str = ""
+    HAKKA_STORAGE_DIR: str = ""
+    HAKKA_STATIC_DIR: str = ""
+    APP_INIT_TYPE: str = "i3"
+    VOL_PY311_DIST: str = ""
+    VOL_PY310_DIST: str = ""
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"

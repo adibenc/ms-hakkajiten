@@ -4,3 +4,4 @@ masonite-logging
 psycopg2-binary
 gunicorn
 uvicorn
+pydantic[email]

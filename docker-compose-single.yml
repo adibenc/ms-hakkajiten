@@ -1,6 +1,6 @@
 # @adibenc
-# FastAPI ms-hakkajiten single service (migrated from Masonite)
-# docker compose up -d --build hakkajiten-tfm
+# FastAPI ms-hakkajiten single service
+# docker compose -f docker-compose-single.yml up -d --build hakkajiten-tfm
 
 services:
   hakkajiten-tfm:
@@ -13,10 +13,16 @@ services:
       - ${DOCKER_APP_HAKKA_PORT:-8002}:8000
     volumes:
       - .:/app
+      - ./pyx/.jupyter/:/root/.jupyter/
+      - ./.paddlex/:/root/.paddlex/
+      # - jupyter_server_config.json:/root/.jupyter/jupyter_server_config.json
+      - ${VOL_PY311_DIST}:/usr/local/lib/python3.11/dist-packages/
+      - ${VOL_PY310_DIST}:/usr/local/lib/python3.10/dist-packages/
       - ${APP_DCK_SHARED_DIR:-./tmp}:/var/shared/
       - ${HAKKA_STORAGE_DIR:-./storage}:/app/storage/
       - ${HAKKA_STATIC_DIR:-./static}:/app/static/
-    command: bash -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000"
+    # command: bash -c "alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port 8000"
+    command: bash -c "/app/setup.sh" # wip
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 5m30s
@@ -39,6 +45,9 @@ services:
       - TEMPLATES_DIR=templates
       - STATIC_DIR=static
       - STORAGE_DIR=storage
+      - APP_INIT_TYPE=${APP_INIT_TYPE}
+      - VOL_PY311_DIST=${VOL_PY311_DIST}
+      - VOL_PY310_DIST=${VOL_PY310_DIST}
     extra_hosts:
       - "l1:172.17.0.1"
       - "host.docker.internal:host-gateway"
