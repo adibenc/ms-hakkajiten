@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: hakkajiten
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # FastAPI Application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-fastapi
+    ports:
+      - "8000:8000"
+    environment:
+      # Environment
+      ENVIRONMENT: development
+      DEBUG: "true"
+
+      # Database
+      DB_CONNECTION: postgres
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: hakkajiten
+      DB_USER: postgres
+      DB_PASS: postgres
+
+      # Application
+      APP_URL: http://localhost:8000
+      APP_KEY: "-RkDOqXojJIlsF_I8wWiUq_KRZ0PtGWTOZ676u5HtLg="
+
+      # JWT
+      JWT_SECRET_KEY: "-RkDOqXojJIlsF_I8wWiUq_KRZ0PtGWTOZ676u5HtLg="
+      JWT_ALGORITHM: "HS256"
+      JWT_EXPIRATION_HOURS: 24
+      JWT_AUDIENCE: "ms-hakkajiten"
+
+      # Email (terminal mode for development)
+      MAIL_DRIVER: terminal
+      MAIL_FROM: no-reply@hakkajiten.com
+
+      # Paths
+      APPROOT: /app/
+      TEMPLATES_DIR: templates
+      STATIC_DIR: static
+      STORAGE_DIR: storage
+
+    volumes:
+      - .:/app
+      - static_files:/app/static
+      - storage_files:/app/storage
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "alembic upgrade head &&
+             uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+
+volumes:
+  postgres_data:
+  static_files:
+  storage_files:
