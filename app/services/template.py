@@ -37,6 +37,7 @@ class TemplateService:
             "request": request,
             "_baseurl": config.APP_URL,
             "app_url": config.APP_URL,
+            "asset_url": config.ASSET_URL,
             "user": request.state.user if hasattr(request.state, "user") else None
         })
 

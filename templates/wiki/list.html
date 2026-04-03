@@ -6,13 +6,13 @@ Design
 {% block content %}
 <div class="container-fluid">
 	<ol class="main-ol">
-		@for l in files
+		{% for l in files %}
 		<li>
-			<a href="{{ _baseurl+'wiki/c/'+l }}">
-			{{ _baseurl+'wiki/c/'+l }}
+			<a href="{{ _baseurl+'/wiki/c/'+l }}">
+			{{ _baseurl+'/wiki/c/'+l }}
 			</a>
 		</li>
-		@endfor
+		{% endfor %}
 	</ol>
 	<div id="group" class="row"></div>
 </div>
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		})
 		return `
 		<div class="col-lg-3 col-sm-4">
-		${ex} 
+		${ex}
 			<ol>${x.join("")}</ol>
 		</div>
 		`
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 setTimeout(function(){
 	document.querySelector("body").style = "background-color:#666666;"
-	
+
 	let ans = Array.from( document.querySelectorAll("a"))
 	ans.map((e)=>{
 		// style="background-color:#acacac;"

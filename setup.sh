@@ -48,6 +48,7 @@ i3(){
   #source $venv_dir/bin/activate
 
   python -m pip install --upgrade pip
+  pip install pydantic[email]
 
   # Install required Python packages
 #   pip install -r requirements.txt

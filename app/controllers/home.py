@@ -4,7 +4,7 @@ from injector import inject
 from fastapi import Request
 from core.controller import BBaseController
 from app.services.template import TemplateService
-
+from core.config import config
 
 class HomeController(BBaseController):
     """Home controller"""
@@ -33,4 +33,4 @@ class HomeController(BBaseController):
         Returns:
             JSON response with test data
         """
-        return self.success("Ok", {"d1": 1337})
+        return self.success("Ok", {"d1": 1337, **dict(config)})

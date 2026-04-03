@@ -23,6 +23,7 @@ class Config(BaseSettings):
     HOST: str = "0.0.0.0"
     PORT: int = 8000
     APP_URL: str = "http://localhost:8000"
+    ASSET_URL: str = "http://localhost:8002/storage/public/assets/"
 
     # Security
     APP_KEY: str = "-RkDOqXojJIlsF_I8wWiUq_KRZ0PtGWTOZ676u5HtLg="
