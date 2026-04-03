@@ -8,8 +8,8 @@ Design
 	<ol class="main-ol">
 		{% for l in files %}
 		<li>
-			<a href="{{ _baseurl+'/wiki/c/'+l }}">
-			{{ _baseurl+'/wiki/c/'+l }}
+			<a href="{{ _baseurl+'wiki/c/'+l }}">
+			{{ _baseurl+'wiki/c/'+l }}
 			</a>
 		</li>
 		{% endfor %}
@@ -41,6 +41,7 @@ let ali
 let grouped
 
 document.addEventListener('DOMContentLoaded', function(){
+	console.log("domcload")
 	ali = Array.from(document.querySelectorAll('li'))
 	grouped = _.chain(ali)
 		.groupBy((e)=>{
