@@ -8,7 +8,7 @@ Design
 	<ol class="main-ol">
 		{% for l in files %}
 		<li>
-			<a href="{{ _baseurl+'wiki/c/'+l }}">
+			<a target="_blank" ="{{ _baseurl+'wiki/c/'+l }}">
 			{{ _baseurl+'wiki/c/'+l }}
 			</a>
 		</li>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	document.querySelector("div#group").innerHTML = grouped.map((e,ex)=> {
 		let x = e.map((e1) => {
 			return `<li>
-				<a href="${e1.innerText}">
+				<a target="_blank" href="${e1.innerText}">
 				${e1.innerText}
 				</a>
 			</li>`
